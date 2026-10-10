@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Öğrenci Güncelle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Öğrenci Bilgilerini Güncelle</h2>
+            <hr>
+            <!-- Form verileri bu sefer güncelleme metoduna gidecek -->
+            <form th:action="@{/ogrenciler/{id}(id=${ogrenci.id})}" th:object="${ogrenci}" method="POST">
+                <div class="mb-3">
+                    <label>Ad</label>
+                    <input type="text" name="ad" th:field="*{ad}" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label>Soyad</label>
+                    <input type="text" name="soyad" th:field="*{soyad}" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" name="email" th:field="*{email}" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label>Bölüm</label>
+                    <input type="text" name="bolum" th:field="*{bolum}" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-success">Güncelle</button>
+                <a th:href="@{/ogrenciler}" class="btn btn-secondary">İptal</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
